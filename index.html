@@ -13,8 +13,8 @@
    -----------------------------------------------------------------------
    1) O número de WhatsApp está no <script>, na constante WHATSAPP.
       Formato: 55 + DDD + número, só dígitos.
-   2) As FAIXAS DE INVESTIMENTO estão no HTML, no bloco "investimento".
-      Elas são o filtro principal — suba os valores conforme o preço subir.
+   2) NÃO se pergunta orçamento ao cliente — por decisão da artista.
+      O valor é apresentado por ela na resposta, depois de avaliar o projeto.
    3) Publique em qualquer host estático gratuito (Netlify, Vercel, GitHub
       Pages, Cloudflare Pages) e cole o link na bio do Instagram.
    ======================================================================= */
@@ -237,23 +237,7 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
     <hr>
 
     <fieldset>
-      <legend>Investimento e agenda</legend>
-
-      <div class="f" id="investimento">
-        <label>Faixa de investimento prevista <span class="req">*</span></label>
-        <p class="hint">Ser honesto aqui poupa o tempo dos dois. O valor final depende do tamanho, da complexidade e do número de sessões.</p>
-        <div class="opts">
-          <!-- ATUALIZE ESTAS FAIXAS CONFORME O PREÇO SUBIR (ver plano, cap. 12) -->
-          <label class="opt"><input type="radio" name="verba" value="Abaixo de R$ 2.000" data-low="1"><span>Abaixo de R$ 2.000</span></label>
-          <label class="opt"><input type="radio" name="verba" value="R$ 2.000 a R$ 3.500"><span>R$ 2.000 a R$ 3.500</span></label>
-          <label class="opt"><input type="radio" name="verba" value="R$ 3.500 a R$ 6.000"><span>R$ 3.500 a R$ 6.000</span></label>
-          <label class="opt"><input type="radio" name="verba" value="R$ 6.000 a R$ 10.000"><span>R$ 6.000 a R$ 10.000</span></label>
-          <label class="opt"><input type="radio" name="verba" value="Acima de R$ 10.000"><span>Acima de R$ 10.000</span></label>
-        </div>
-        <div class="warn" id="warnVerba">
-          Meus projetos autorais começam a partir de <b>R$ 2.000</b>. Você pode enviar a candidatura mesmo assim — se a ideia couber em um formato menor, eu retorno. Se preferir, acompanhe o perfil: publico peças de entrada em datas específicas do ano.
-        </div>
-      </div>
+      <legend>Prazo e agenda</legend>
 
       <div class="f">
         <label>Prazo desejado <span class="req">*</span></label>
@@ -309,7 +293,7 @@ const rv = n  => { const el = document.querySelector(`input[name="${n}"]:checked
 
 /* --- barra de progresso --- */
 const campos = ["nome","insta","fone","cidade","ideia","regiao","prazo","extra"];
-const radios = ["idade","tam","cobre","primeira","verba","disp"];
+const radios = ["idade","tam","cobre","primeira","disp"];
 function progresso(){
   let ok = 0, total = campos.length - 1 + radios.length;  // "extra" é opcional
   campos.forEach(c => { if (c !== "extra" && $(c) && $(c).value.trim()) ok++; });
@@ -323,8 +307,6 @@ document.addEventListener("change", progresso);
 document.addEventListener("change", e => {
   if (e.target.name === "idade")
     $("warnIdade").classList.toggle("on", e.target.value.startsWith("Menor"));
-  if (e.target.name === "verba")
-    $("warnVerba").classList.toggle("on", e.target.dataset.low === "1");
 });
 
 /* --- envio --- */
@@ -339,7 +321,7 @@ $("form").addEventListener("submit", ev => {
   ];
   const faltando = obrig.filter(([id]) => !$(id).value.trim()).map(([,rot]) => rot);
   [["idade","sua idade"],["tam","o tamanho"],["cobre","se já há tatuagem no local"],
-   ["primeira","se é a primeira tatuagem"],["verba","a faixa de investimento"],
+   ["primeira","se é a primeira tatuagem"],
    ["disp","sua disponibilidade"]].forEach(([n,rot]) => { if (!rv(n)) faltando.push(rot); });
 
   if (faltando.length){
@@ -366,8 +348,7 @@ $("form").addEventListener("submit", ev => {
     "*Local:* "       + rv("cobre"),
     "*Experiência:* " + rv("primeira"),
     "",
-    "*INVESTIMENTO E AGENDA*",
-    "*Faixa:* "       + rv("verba"),
+    "*AGENDA*",
     "*Prazo:* "       + $("prazo").value,
     "*Disponibilidade:* " + rv("disp")
   ];
