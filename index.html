@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<title>Candidatura de Projeto — Loo Tattoo | Luanna Vidolim</title>
-<meta name="description" content="Envie sua ideia de projeto em realismo preto e cinza. Agenda selecionada.">
-<meta property="og:title" content="Candidatura de Projeto — Luanna Vidolim">
-<meta property="og:description" content="Realismo preto e cinza autoral. Poucos projetos por mês.">
+<title>Me conta sua ideia — Loo Tattoo | Luanna Vidolim</title>
+<meta name="description" content="Conte sua ideia de tatuagem em realismo preto e cinza com a Luanna Vidolim.">
+<meta property="og:title" content="Me conta sua ideia — Luanna Vidolim">
+<meta property="og:description" content="Realismo preto e cinza autoral. Me conta o que você tem em mente.">
 <style>
 /* =======================================================================
    CONFIGURAÇÃO — leia antes de publicar
@@ -121,8 +121,8 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
 <div class="wrap">
 
   <div class="brand">Loo Tattoo · Luanna Vidolim</div>
-  <h1>Candidatura de projeto</h1>
-  <p class="lead">Realismo preto e cinza autoral. Trabalho com poucos projetos por vez, para dedicar a cada um o tempo que ele exige.</p>
+  <h1>Me conta sua ideia</h1>
+  <p class="lead">Realismo preto e cinza. Prefiro pegar poucos projetos por vez — assim consigo dar a cada um o tempo que ele merece, sem correria.</p>
 
   <div class="creds">
     <span>24× premiada</span>
@@ -133,11 +133,15 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
   <div class="howto">
     <h2>Como funciona</h2>
     <ol>
-      <li>Você preenche este formulário com a sua ideia — leva <b>3 minutos</b>.</li>
-      <li>Eu analiso pessoalmente todas as candidaturas <b>uma vez por semana</b>.</li>
-      <li>Se o projeto fizer sentido para os dois lados, retorno com proposta, valor fechado e datas.</li>
-      <li>A agenda é confirmada com sinal. <b>Projeto fechado, não sessão avulsa.</b></li>
+      <li>Você me conta sua ideia aqui — leva <b>3 minutos</b> e é só preencher no celular mesmo.</li>
+      <li>Minha assistente irá responder o mais breve possível.</li>
+      <li>Eu olho sua ideia com calma e volto com o <b>valor fechado</b> e quantas sessões vão levar.</li>
+      <li>Se estiver tudo certo pra você, a gente reserva sua data com um sinal.</li>
     </ol>
+    <p style="margin:12px 0 0;font-size:13px;color:var(--mut);line-height:1.5">
+      Trabalho com <b style="color:var(--txt)">valor fechado por projeto</b>, e não por sessão.
+      Assim você já sabe desde o começo quanto vai investir no total — sem susto a cada retorno.
+    </p>
   </div>
 
   <div class="bar"><i id="prog"></i></div>
@@ -155,7 +159,7 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
 
       <div class="f">
         <label>Seu @ no Instagram <span class="req">*</span></label>
-        <p class="hint">É por lá que eu retorno se o projeto for selecionado.</p>
+        <p class="hint">É por lá que eu te respondo. Pode ser o mesmo do WhatsApp.</p>
         <input type="text" id="insta" placeholder="@seuperfil">
       </div>
 
@@ -187,7 +191,7 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
 
       <div class="f">
         <label>Descreva sua ideia <span class="req">*</span></label>
-        <p class="hint">Quanto mais detalhe, melhor consigo avaliar. Conte o que você quer representar, não só o desenho.</p>
+        <p class="hint">Quanto mais detalhe, melhor. Me conta o que você quer representar, e não só o desenho em si — isso me ajuda muito na criação.</p>
         <textarea id="ideia" placeholder="Ex.: quero fechar o antebraço com um leão em realismo, ligado à memória do meu avô. Tenho referências salvas e gostaria de algo com bastante contraste."></textarea>
       </div>
 
@@ -262,22 +266,22 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
       </div>
 
       <div class="f">
-        <label>Algo mais que eu deva saber?</label>
-        <p class="hint">Opcional. Referências, restrições de saúde, alergias, contexto da homenagem.</p>
+        <label>Quer me contar mais alguma coisa?</label>
+        <p class="hint">Opcional. Referências, alguma restrição de saúde, alergia, ou a história por trás da peça.</p>
         <textarea id="extra" placeholder="Escreva aqui, se houver."></textarea>
       </div>
     </fieldset>
 
-    <button type="submit" class="btn" id="btn">Enviar candidatura</button>
+    <button type="submit" class="btn" id="btn">Enviar minha ideia</button>
     <p class="note">
-      Ao enviar, o WhatsApp abre com suas respostas já organizadas.<br>
-      É só apertar em enviar na conversa.
+      Ao enviar, o WhatsApp abre com tudo já preenchido.<br>
+      É só apertar em enviar na conversa que a gente te responde.
     </p>
   </form>
 
   <div class="foot">
     <b>Loo Tattoo</b> · Office Tower, Carioca Shopping — Rio de Janeiro<br>
-    Analiso as candidaturas uma vez por semana.
+    Obrigada por pensar na gente pra fazer essa peça. 🖤
   </div>
 </div>
 
@@ -325,7 +329,7 @@ $("form").addEventListener("submit", ev => {
    ["disp","sua disponibilidade"]].forEach(([n,rot]) => { if (!rv(n)) faltando.push(rot); });
 
   if (faltando.length){
-    erro.textContent = "Faltou preencher: " + faltando.join(", ") + ".";
+    erro.textContent = "Ficou faltando: " + faltando.join(", ") + ".";
     erro.classList.add("on");
     erro.scrollIntoView?.({behavior:"smooth", block:"center"});
     return;
@@ -333,7 +337,7 @@ $("form").addEventListener("submit", ev => {
   erro.classList.remove("on");
 
   const L = [
-    "*CANDIDATURA DE PROJETO*",
+    "*NOVA IDEIA DE PROJETO*",
     "",
     "*Nome:* "        + $("nome").value.trim(),
     "*Instagram:* "   + $("insta").value.trim(),
@@ -353,12 +357,12 @@ $("form").addEventListener("submit", ev => {
     "*Disponibilidade:* " + rv("disp")
   ];
   if ($("extra").value.trim()) L.push("", "*Observações:* " + $("extra").value.trim());
-  L.push("", "_Enviado pelo formulário de candidatura._");
+  L.push("", "_Enviado pelo formulário do site._");
 
   $("btn").textContent = "Abrindo o WhatsApp…";
   $("btn").disabled = true;
   window.location.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(L.join("\n"));
-  setTimeout(() => { $("btn").textContent = "Enviar candidatura"; $("btn").disabled = false; }, 2500);
+  setTimeout(() => { $("btn").textContent = "Enviar minha ideia"; $("btn").disabled = false; }, 2500);
 });
 </script>
 </body>
