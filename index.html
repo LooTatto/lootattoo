@@ -7,6 +7,25 @@
 <meta name="description" content="Conte sua ideia de tatuagem em realismo preto e cinza com a Luanna Vidolim.">
 <meta property="og:title" content="Me conta sua ideia — Luanna Vidolim">
 <meta property="og:description" content="Realismo preto e cinza autoral. Me conta o que você tem em mente.">
+<!-- ===================== META PIXEL =====================
+     Pixel ID: 1930348784328487  (Loo Tattoo)
+     O evento "Lead" dispara no envio do formulário — ver no fim do arquivo.
+     ====================================================== -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1930348784328487');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1930348784328487&ev=PageView&noscript=1"/></noscript>
+<!-- =================== FIM META PIXEL =================== -->
 <style>
 /* =======================================================================
    CONFIGURAÇÃO — leia antes de publicar
@@ -361,7 +380,12 @@ $("form").addEventListener("submit", ev => {
 
   $("btn").textContent = "Abrindo o WhatsApp…";
   $("btn").disabled = true;
-  window.location.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(L.join("\n"));
+
+  // conversão para o Meta Ads — dispara antes de sair da página
+  if (typeof fbq === "function") fbq("track", "Lead", { content_name: "Formulario_Tatuagem" });
+
+  const destino = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(L.join("\n"));
+  setTimeout(() => { window.location.href = destino; }, 350);   // folga p/ o pixel registrar
   setTimeout(() => { $("btn").textContent = "Enviar minha ideia"; $("btn").disabled = false; }, 2500);
 });
 </script>
